@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      clippyjs:
+        specifier: ^0.1.0
+        version: 0.1.0
       next:
         specifier: 16.2.10
         version: 16.2.10(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -389,6 +392,9 @@ packages:
 
   client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
+
+  clippyjs@0.1.0:
+    resolution: {integrity: sha512-XnchzSR8H8X43TvwnAktK5xDewKGSyfGu8DagBZCbOUdx0dWAFrFdxdCWlaJkyfx4M3Amvvu13jbHQ/IYQOD+w==}
 
   csstype@3.2.3:
     resolution: {integrity: sha512-z1HGKcYy2xA8AGQfwrn0PAy+PB7X/GSj3UVJW9qKyn43xWa+gl5nXmU4qqLMRzWVLFC8KusUX8T/0kCiOYpAIQ==}
@@ -824,6 +830,8 @@ snapshots:
   caniuse-lite@1.0.30001806: {}
 
   client-only@0.0.1: {}
+
+  clippyjs@0.1.0: {}
 
   csstype@3.2.3: {}
 

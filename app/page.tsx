@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { AiFillGithub, AiFillLinkedin, AiOutlineFilePdf, AiOutlineMail } from 'react-icons/ai';
 
 type Experience = {
@@ -112,6 +112,51 @@ export default function Home() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const contributionCarouselRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let disposed = false;
+    let balloonObserver: MutationObserver | undefined;
+    let clippy: Awaited<ReturnType<typeof import('clippyjs')['initAgent']>> | undefined;
+
+    async function showClippy() {
+      const [{ initAgent }, { Clippy }] = await Promise.all([
+        import('clippyjs'),
+        import('clippyjs/agents'),
+      ]);
+      clippy = await initAgent(Clippy);
+      const clippyElements = Array.from(document.body.children).filter(
+        (element): element is HTMLElement => element instanceof HTMLElement
+          && element.style.zIndex === '10001',
+      );
+      for (const element of clippyElements) {
+        element.style.boxSizing = 'content-box';
+        element.querySelectorAll<HTMLElement>('*').forEach((child) => {
+          child.style.boxSizing = 'content-box';
+        });
+      }
+      const balloon = clippyElements.at(-1);
+      const balloonContent = balloon?.lastElementChild as HTMLElement | null;
+      if (balloonContent) {
+        balloonObserver = new MutationObserver(() => {
+          balloonContent.style.setProperty('height', 'auto', 'important');
+        });
+        balloonObserver.observe(balloonContent, { childList: true, characterData: true, subtree: true });
+      }
+      if (disposed) {
+        clippy.dispose();
+        return;
+      }
+      clippy.show(false);
+      clippy.speak('Ryan is open to work', { hold: true });
+    }
+
+    showClippy().catch((error) => console.error('Unable to load Clippy', error));
+    return () => {
+      disposed = true;
+      balloonObserver?.disconnect();
+      clippy?.dispose();
+    };
+  }, []);
 
   function openPhoto(photo: Photograph) {
     setSelectedPhoto(photo);
