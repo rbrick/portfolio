@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useRef, useState } from 'react';
+import { AiFillGithub, AiFillLinkedin, AiOutlineFilePdf, AiOutlineMail } from 'react-icons/ai';
 
 type Experience = {
   company: string;
@@ -90,10 +91,10 @@ export default function Home() {
         <h1>Ryan W.</h1>
         <p className="intro-role">Software Engineer | Astrophotographer</p>
         <div className="links">
-          <a href="mailto:me@rcw.io">me@rcw.io</a>
-          <a href="https://linkedin.com/in/ryancwillette" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="https://github.com/rbrick" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="/ryan_willette_resume_2026_revision.pdf" target="_blank">Résumé ↓</a>
+          <a href="mailto:me@rcw.io"><AiOutlineMail aria-hidden="true" />me@rcw.io</a>
+          <a href="https://linkedin.com/in/ryancwillette" target="_blank" rel="noreferrer"><AiFillLinkedin aria-hidden="true" />LinkedIn</a>
+          <a href="https://github.com/rbrick" target="_blank" rel="noreferrer"><AiFillGithub aria-hidden="true" />GitHub</a>
+          <a href="/ryan_willette_resume_2026_revision.pdf" target="_blank"><AiOutlineFilePdf aria-hidden="true" />Résumé ↓</a>
         </div>
       </div>
       <a className="continue" href="#experience">Experience ↓</a>

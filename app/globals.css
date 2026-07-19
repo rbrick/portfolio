@@ -1,1 +1,90 @@
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080908;color:#f4f4f1;font-family:var(--font-manrope),Arial,sans-serif}body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(5,6,5,.9),rgba(5,6,5,.3)),url('/ghost_nebula.png') center 44%/cover no-repeat;z-index:-1}a{color:inherit;text-decoration:none}.intro{min-height:100svh;padding:clamp(32px,6vw,88px);display:flex;flex-direction:column;justify-content:center;position:relative}.intro-content{width:min(760px,100%)}.label{margin:0 0 28px;text-transform:uppercase;letter-spacing:.16em;font:500 11px var(--font-mono);color:#c8c8c2}.intro h1{font-size:clamp(38px,6vw,74px);line-height:1.08;letter-spacing:-.045em;margin:0;font-weight:550}.intro-role{margin:18px 0 0;color:#c8c8c2;font-size:clamp(14px,1.5vw,17px);letter-spacing:.02em}.links{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:38px}.links a,.continue{font-size:13px;border-bottom:1px solid #888;padding-bottom:5px}.links a:hover{border-color:#fff}.continue{position:absolute;bottom:38px;right:clamp(32px,6vw,88px);color:#bbb}.content{background:rgba(12,13,12,.94);border-top:1px solid rgba(255,255,255,.12);backdrop-filter:blur(18px)}.content-inner{width:min(1100px,100%);margin:auto;padding:110px clamp(24px,5vw,70px) 40px}.section-title{display:grid;grid-template-columns:240px 1fr;gap:40px;margin-bottom:45px}.section-title .label{margin:4px 0}.section-title>p:last-child{margin:0;color:#aaa;line-height:1.6;max-width:550px}.experience{padding:35px 0;border-top:1px solid #343634;display:grid;grid-template-columns:240px 1fr;gap:40px}.experience-heading h2,.photo h2{font-size:17px;font-weight:600;margin:0}.experience-heading p{font-size:13px;color:#aaa;margin:7px 0}.experience-heading time{display:block;font:11px var(--font-mono);color:#777;margin-top:18px}.description{margin:0;line-height:1.7;color:#c1c1bd;font-size:14px;max-width:680px}.tools{grid-column:2;margin:12px 0 0;font:11px var(--font-mono);color:#777}.astro-title{margin-top:120px}.carousel{position:relative}.photo-grid{display:flex;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#555 transparent;padding-bottom:22px}.carousel-arrow{position:absolute;z-index:2;top:calc(50% - 42px);width:44px;height:44px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:rgba(8,9,8,.8);color:#fff;font-size:18px;cursor:pointer;backdrop-filter:blur(8px)}.carousel-arrow:hover{background:#fff;color:#111}.carousel-arrow.previous{left:-22px}.carousel-arrow.next{right:-22px}.photo-grid::-webkit-scrollbar{height:5px}.photo-grid::-webkit-scrollbar-thumb{background:#555}.photo{flex:0 0 min(420px,72vw);scroll-snap-align:start}.photo button{display:block;border:0;padding:0;width:100%;aspect-ratio:3/4;position:relative;background:#151515;cursor:zoom-in;overflow:hidden}.photo img{object-fit:cover;transition:transform .5s ease}.photo button:hover img{transform:scale(1.015)}.photo>div{position:relative;padding-top:16px}.photo h2{font-size:14px}.photo p{font-size:12px;color:#888;margin:6px 0}.photo a{position:absolute;right:0;top:16px;font-size:11px;border-bottom:1px solid #666;padding-bottom:3px}footer{border-top:1px solid #343634;margin-top:110px;padding-top:30px;display:flex;justify-content:space-between;color:#777;font:11px var(--font-mono)}.lightbox{width:100vw;height:100vh;max-width:none;max-height:none;border:0;padding:50px;background:rgba(3,3,3,.96);overflow:auto}.lightbox::backdrop{background:#030303}.lightbox img{display:block;max-width:100%;height:auto;margin:auto}.close{position:fixed;right:25px;top:22px;z-index:2;color:#fff;background:#111;border:1px solid #555;padding:9px 13px;cursor:pointer}@media(max-width:700px){.intro{justify-content:flex-end;padding-bottom:100px}.intro h1{font-size:39px}.continue{left:24px;right:auto}.content-inner{padding-top:75px}.section-title,.experience{grid-template-columns:1fr;gap:12px}.experience{padding:28px 0}.tools{grid-column:1}.experience-heading{display:flex;justify-content:space-between;gap:20px}.experience-heading time{margin-top:3px;white-space:nowrap}.astro-title{margin-top:85px}.photo{flex-basis:82vw}.carousel-arrow{top:calc(50% - 38px);width:40px;height:40px}.carousel-arrow.previous{left:-12px}.carousel-arrow.next{right:-12px}.lightbox{padding:50px 10px 20px}footer{margin-top:75px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.photo img{transition:none}}
+@import "tailwindcss";
+
+@layer base {
+  * { @apply box-border; }
+  html { @apply scroll-smooth; }
+  body {
+    @apply m-0 bg-[#080908] text-[#f4f4f1];
+    font-family: var(--font-manrope), Arial, sans-serif;
+  }
+  body::before {
+    content: "";
+    @apply fixed inset-0 -z-10;
+    background: linear-gradient(90deg, rgba(5,6,5,.9), rgba(5,6,5,.3)), url('/ghost_nebula.png') center 44% / cover no-repeat;
+  }
+  a { @apply text-inherit no-underline; }
+}
+
+@layer components {
+  .intro { @apply relative flex min-h-svh flex-col justify-center px-[clamp(32px,6vw,88px)] py-[clamp(32px,6vw,88px)]; }
+  .intro-content { @apply w-full max-w-[760px]; }
+  .label { @apply mt-0 mb-7 text-[11px] font-medium tracking-[.16em] text-[#c8c8c2] uppercase; font-family: var(--font-mono); }
+  .intro h1 { @apply m-0 text-[clamp(38px,6vw,74px)] leading-[1.08] font-[550] tracking-[-.045em]; }
+  .intro-role { @apply mt-[18px] mb-0 text-[clamp(14px,1.5vw,17px)] tracking-[.02em] text-[#c8c8c2]; }
+  .links { @apply mt-[38px] flex flex-wrap gap-x-7 gap-y-3; }
+  .links a, .continue { @apply text-[13px]; }
+  .links a { @apply inline-flex items-center gap-[7px]; }
+  .links svg { @apply h-[15px] w-[15px] shrink-0; }
+  .continue { @apply absolute right-[clamp(32px,6vw,88px)] bottom-[38px] border-b border-[#888] pb-[5px] text-[#bbb]; }
+
+  .content { @apply border-t border-white/10 bg-[rgba(12,13,12,.94)] backdrop-blur-[18px]; }
+  .content-inner { @apply mx-auto w-full max-w-[1100px] px-[clamp(24px,5vw,70px)] pt-[110px] pb-10; }
+  .section-title { @apply mb-[45px] grid grid-cols-[240px_1fr] gap-10; }
+  .section-title .label { @apply my-1; }
+  .section-title > p:last-child { @apply m-0 max-w-[550px] leading-[1.6] text-[#aaa]; }
+
+  .experience { @apply grid grid-cols-[240px_1fr] gap-10 border-t border-[#343634] py-[35px]; }
+  .experience-heading h2, .photo h2 { @apply m-0 text-[17px] font-semibold; }
+  .experience-heading p { @apply my-[7px] text-[13px] text-[#aaa]; }
+  .experience-heading time { @apply mt-[18px] block text-[11px] text-[#777]; font-family: var(--font-mono); }
+  .description { @apply m-0 max-w-[680px] text-[14px] leading-[1.7] text-[#c1c1bd]; }
+  .tools { @apply col-start-2 mt-3 mb-0 text-[11px] text-[#777]; font-family: var(--font-mono); }
+
+  .astro-title { @apply mt-[120px]; }
+  .carousel { @apply relative; }
+  .photo-grid { @apply flex snap-x snap-mandatory gap-7 overflow-x-auto pb-[22px]; scrollbar-width: thin; scrollbar-color: #555 transparent; }
+  .photo-grid::-webkit-scrollbar { height: 5px; }
+  .photo-grid::-webkit-scrollbar-thumb { background: #555; }
+  .carousel-arrow { @apply absolute top-[calc(50%-42px)] z-[2] h-11 w-11 cursor-pointer rounded-full border border-white/35 bg-[rgba(8,9,8,.8)] text-[18px] text-white backdrop-blur-[8px]; }
+  .carousel-arrow:hover { @apply bg-white text-[#111]; }
+  .carousel-arrow.previous { @apply -left-[22px]; }
+  .carousel-arrow.next { @apply -right-[22px]; }
+  .photo { @apply w-[min(420px,72vw)] shrink-0 snap-start; }
+  .photo button { @apply relative block aspect-[3/4] w-full cursor-zoom-in overflow-hidden border-0 bg-[#151515] p-0; }
+  .photo img { @apply object-cover transition-transform duration-500 ease-in-out; }
+  .photo button:hover img { @apply scale-[1.015]; }
+  .photo > div { @apply relative pt-4; }
+  .photo h2 { @apply text-[14px]; }
+  .photo p { @apply my-1.5 text-[12px] text-[#888]; }
+  .photo a { @apply absolute top-4 right-0 border-b border-[#666] pb-[3px] text-[11px]; }
+
+  footer { @apply mt-[110px] flex justify-between border-t border-[#343634] pt-[30px] text-[11px] text-[#777]; font-family: var(--font-mono); }
+  .lightbox { @apply h-screen max-h-none w-screen max-w-none overflow-auto border-0 bg-[rgba(3,3,3,.96)] p-[50px]; }
+  .lightbox::backdrop { @apply bg-[#030303]; }
+  .lightbox img { @apply mx-auto block h-auto max-w-full; }
+  .close { @apply fixed top-[22px] right-[25px] z-[2] cursor-pointer border border-[#555] bg-[#111] px-[13px] py-[9px] text-white; }
+}
+
+@media (max-width: 700px) {
+  .intro { @apply justify-end pb-[100px]; }
+  .intro h1 { @apply text-[39px]; }
+  .continue { @apply right-auto left-6; }
+  .content-inner { @apply pt-[75px]; }
+  .section-title, .experience { @apply grid-cols-1 gap-3; }
+  .experience { @apply py-7; }
+  .tools { @apply col-start-1; }
+  .experience-heading { @apply flex justify-between gap-5; }
+  .experience-heading time { @apply mt-[3px] whitespace-nowrap; }
+  .astro-title { @apply mt-[85px]; }
+  .photo { @apply w-[82vw]; }
+  .carousel-arrow { @apply top-[calc(50%-38px)] h-10 w-10; }
+  .carousel-arrow.previous { @apply -left-3; }
+  .carousel-arrow.next { @apply -right-3; }
+  .lightbox { @apply px-[10px] pt-[50px] pb-5; }
+  footer { @apply mt-[75px]; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { @apply scroll-auto; }
+  .photo img { @apply transition-none; }
+}
