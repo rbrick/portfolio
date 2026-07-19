@@ -40,6 +40,25 @@
   .description { @apply m-0 max-w-[680px] text-[14px] leading-[1.7] text-[#c1c1bd]; }
   .tools { @apply col-start-2 mt-3 mb-0 text-[11px] text-[#777]; font-family: var(--font-mono); }
 
+  .contributions-title { @apply mt-[120px]; }
+  .contribution-carousel { @apply relative; }
+  .contribution-grid { @apply flex snap-x snap-mandatory gap-7 overflow-x-auto pb-[22px]; scrollbar-width: thin; scrollbar-color: #555 transparent; }
+  .contribution-grid::-webkit-scrollbar { height: 5px; }
+  .contribution-grid::-webkit-scrollbar-thumb { background: #555; }
+  .contribution { @apply relative block aspect-[8/5] w-[420px] shrink-0 snap-start overflow-hidden bg-[#151515]; }
+  .contribution-carousel .carousel-arrow { top: calc(50% - 33px); }
+  .contribution > img { @apply object-cover transition-transform duration-500 ease-out; }
+  .contribution-overlay { @apply absolute inset-0 flex items-end justify-between gap-8 bg-gradient-to-t from-black via-black/80 to-black/15 p-[clamp(20px,4vw,42px)] opacity-0 transition-opacity duration-300; }
+  .contribution-overlay > div { @apply max-w-[650px]; }
+  .contribution-meta { @apply mb-3 flex items-center justify-between gap-4; }
+  .contribution-name { @apply m-0 text-[11px] font-semibold tracking-[.16em] text-white uppercase; font-family: var(--font-mono); text-shadow: 0 1px 8px #000; }
+  .contribution-meta time { @apply shrink-0 text-[10px] text-white/80; font-family: var(--font-mono); text-shadow: 0 1px 8px #000; }
+  .contribution-summary { @apply m-0 text-[clamp(14px,2vw,19px)] leading-[1.6] font-medium text-white; text-shadow: 0 1px 10px #000; }
+  .contribution-overlay span { @apply hidden shrink-0 border-b border-[#aaa] pb-1 text-[11px]; }
+  .contribution:hover > img, .contribution:focus-visible > img { @apply scale-[1.02]; }
+  .contribution:hover .contribution-overlay, .contribution:focus-visible .contribution-overlay { @apply opacity-100; }
+  .contribution:focus-visible { @apply outline-2 outline-offset-4 outline-white; }
+
   .astro-title { @apply mt-[120px]; }
   .carousel { @apply relative; }
   .photo-grid { @apply flex snap-x snap-mandatory gap-7 overflow-x-auto pb-[22px]; scrollbar-width: thin; scrollbar-color: #555 transparent; }
@@ -75,7 +94,10 @@
   .tools { @apply col-start-1; }
   .experience-heading { @apply flex justify-between gap-5; }
   .experience-heading time { @apply mt-[3px] whitespace-nowrap; }
-  .astro-title { @apply mt-[85px]; }
+  .contributions-title, .astro-title { @apply mt-[85px]; }
+  .contribution { @apply w-[82vw]; }
+  .contribution-overlay { @apply opacity-100; }
+  .contribution-overlay span { @apply hidden; }
   .photo { @apply w-[82vw]; }
   .carousel-arrow { @apply top-[calc(50%-38px)] h-10 w-10; }
   .carousel-arrow.previous { @apply -left-3; }
@@ -86,5 +108,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   html { @apply scroll-auto; }
-  .photo img { @apply transition-none; }
+  .photo img, .contribution > img, .contribution-overlay { @apply transition-none; }
 }

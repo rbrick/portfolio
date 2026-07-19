@@ -19,6 +19,15 @@ type Photograph = {
   href?: string;
 };
 
+type Contribution = {
+  name: string;
+  src: string;
+  href: string;
+  summary: string;
+  tenure: string;
+  imagePosition?: string;
+};
+
 const experiences: Experience[] = [
   {
     company: 'Sophon Labs',
@@ -57,6 +66,38 @@ const experiences: Experience[] = [
   },
 ];
 
+const contributions: Contribution[] = [
+  {
+    name: 'MCTeams',
+    src: '/mcteams.webp',
+    href: 'https://mcteams.com',
+    summary: 'Head of Engineering. Designed robust Java libraries for rapid game-server development, helping bring in thousands of players.',
+    tenure: '2017—Present',
+  },
+    {
+    name: 'Lunar Client',
+    src: '/lunar_client.webp',
+    href: 'https://www.lunarclient.com',
+    summary: 'Developed an extensible cosmetics system, and Go asset tooling, while helping build a version-agnostic client API through low-level JVM injection.',
+    tenure: '2020—2022',
+  },
+  {
+    name: 'Neo Tokyo',
+    src: '/neo_tokyo.webp',
+    href: 'https://neotokyo.codes',
+    summary: 'Built an NFT avatar customizer and continue to maintain CitGen, a rasterization service that turns on-chain SVG avatars into high-quality profile images for the community.',
+    tenure: '2021—2022',
+    imagePosition: 'center top',
+  },
+  {
+    name: 'FrozenOrb',
+    src: '/frozenorb.webp',
+    href: 'https://frozenorb.net',
+    summary: 'Built production Java frameworks and optimized backend infrastructure for a game network used by more than one million unique players.',
+    tenure: '2015—2017',
+  },
+];
+
 const photographs: Photograph[] = [
   { src: '/ghost_nebula.png', title: 'IC 63 — The Ghost Nebula', detail: 'Cassiopeia · Top Pick Nomination', href: 'https://app.astrobin.com/i/12li9w' },
   { src: '/pillars_of_creation.png', title: 'M16 — Pillars of Creation', detail: 'Serpens · 6,500 light-years' },
@@ -69,6 +110,7 @@ const photographs: Photograph[] = [
 export default function Home() {
   const [selectedPhoto, setSelectedPhoto] = useState<Photograph | null>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const contributionCarouselRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
 
   function openPhoto(photo: Photograph) {
@@ -83,6 +125,10 @@ export default function Home() {
 
   function scrollCarousel(direction: -1 | 1) {
     carouselRef.current?.scrollBy({ left: direction * carouselRef.current.clientWidth * 0.75, behavior: 'smooth' });
+  }
+
+  function scrollContributions(direction: -1 | 1) {
+    contributionCarouselRef.current?.scrollBy({ left: direction * 440, behavior: 'smooth' });
   }
 
   return <main>
@@ -115,6 +161,43 @@ export default function Home() {
             <p className="description">{experience.description}</p>
             <p className="tools">{experience.tools}</p>
           </article>)}
+        </div>
+
+        <div className="section-title contributions-title">
+          <p className="label">Contributions</p>
+          <p>Selected projects I’ve helped build and bring to life.</p>
+        </div>
+        <div className="contribution-carousel">
+          <button className="carousel-arrow previous" type="button" onClick={() => scrollContributions(-1)} aria-label="Previous contribution">←</button>
+          <div className="contribution-grid" ref={contributionCarouselRef}>
+            {contributions.map((contribution) => <a
+              className="contribution"
+              href={contribution.href}
+              target="_blank"
+              rel="noreferrer"
+              key={contribution.name}
+              aria-label={`${contribution.name}: ${contribution.summary}`}
+            >
+              <Image
+                src={contribution.src}
+                alt={`${contribution.name} website`}
+                fill
+                sizes="(max-width: 700px) 82vw, 420px"
+                style={{ objectPosition: contribution.imagePosition }}
+              />
+              <div className="contribution-overlay">
+                <div>
+                  <div className="contribution-meta">
+                    <p className="contribution-name">{contribution.name}</p>
+                    <time>{contribution.tenure}</time>
+                  </div>
+                  <p className="contribution-summary">{contribution.summary}</p>
+                </div>
+                <span aria-hidden="true">Visit site ↗</span>
+              </div>
+            </a>)}
+          </div>
+          <button className="carousel-arrow next" type="button" onClick={() => scrollContributions(1)} aria-label="Next contribution">→</button>
         </div>
 
         <div className="section-title astro-title">
