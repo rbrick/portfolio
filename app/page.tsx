@@ -25,14 +25,14 @@ const experiences: Experience[] = [
     role: 'Full Stack Engineer',
     date: '2023—2026',
     description: 'Owned engineering across products on Sophon’s zkSync-based Layer 2, including scalable services for a USDC banking app, audited smart contracts, identity infrastructure, and a rewards platform that distributed millions of dollars to more than 8,000 users.',
-    tools: 'Go · TypeScript · Solidity · zkSync · PostgreSQL',
+    tools: 'Go · TypeScript · Solidity · zkSync · PostgreSQL · Redis · AWS · MongoDB · Kubernetes · Docker',
   },
   {
     company: 'Byt, Inc.',
     role: 'Backend Engineer',
     date: '2021—2023',
     description: 'Led early backend engineering for an NFT marketplace. Built a low-latency Solana transaction indexer and high-performance marketplace APIs designed for real-time ingestion and scale.',
-    tools: 'Go · TypeScript · Solana',
+    tools: 'Go · TypeScript · MySQL · Ethereum · Arbitrum · Solana',
   },
   {
     company: 'Moonsworth, LLC',
@@ -46,7 +46,7 @@ const experiences: Experience[] = [
     role: 'Lead Software Engineer',
     date: '2017—2020',
     description: 'Designed backend services and game frameworks supporting more than 10,000 players, including a Redis-based distributed queue and zero-downtime delivery pipelines.',
-    tools: 'Java · Redis · Jenkins · GitHub Actions',
+    tools: 'Java · Redis · MongoDB · Jenkins · GitHub Actions',
   },
   {
     company: 'FrozenOrb, LLC',
