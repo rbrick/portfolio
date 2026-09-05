@@ -185,7 +185,7 @@ export default function Home() {
           <a href="mailto:me@rcw.io"><AiOutlineMail aria-hidden="true" />me@rcw.io</a>
           <a href="https://linkedin.com/in/ryancwillette" target="_blank" rel="noreferrer"><AiFillLinkedin aria-hidden="true" />LinkedIn</a>
           <a href="https://github.com/rbrick" target="_blank" rel="noreferrer"><AiFillGithub aria-hidden="true" />GitHub</a>
-          <a href="/ryan_willette_resume_2026_revision.pdf" target="_blank"><AiOutlineFilePdf aria-hidden="true" />Résumé ↓</a>
+          <a href="/rwillette_resume.pdf" target="_blank"><AiOutlineFilePdf aria-hidden="true" />Résumé ↓</a>
         </div>
       </div>
       <a className="continue" href="#experience">Experience ↓</a>
